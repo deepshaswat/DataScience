@@ -1,0 +1,295 @@
+R
+
+Variables:
+i/p: 1+2
+o/p: [1] 3
+
+i/p: height <- 2
+i/p: width <- 4
+
+i/p: height
+o/p: [1] 4
+
+i/p: ls()		#will list all the objects  in the workspace
+o/p: [1] "height" "width"
+
+i/p: area <- height * width
+o/p: [1]
+
+R Script:
+rectangle.R
+# hash is used for commenting
+height <- 2
+width <- 4
+area <- height * width
+area
+
+#Arithmetics
+# Addition
+5 + 5
+
+# Subtraction
+5 - 5
+
+# Multiplication
+3 * 5
+# pi is used in place of the value of pi = 3.142
+
+ # Division
+(5 + 5) / 2
+
+# Exponentiation
+2 ^ 5
+
+# Modulo
+28 %% 6
+
+rm(area) to clear the variables
+
+
+#data types:
+class(TRUE) (FALSE) (NA)
+[1] "logical"
+
+
+numeric:
+i/p: 2
+[1] 2
+
+i/p: 2.5
+[1] 2.5
+
+i/p: 2L
+[1] 2
+
+class(2)
+[1] "numeric"
+
+class(2L)
+[1] "integer"
+
+# is function is used to check the class of the value
+is.numeric(2)
+[1] TRUE
+
+is.numeric(2L)
+[1] TRUE
+
+is.integer(2)
+[1] FALSE
+
+is.integer(2L)
+[1] TRUE
+
+character, double, complex, raw
+
+#as function is used to convert one data type to other
+as.numeric(TRUE)
+[1] 1
+
+as.character(4)
+[1] "4"
+
+as.numeric("4.5")
+[1] 4.5
+
+as.integer(4.5)
+[1] 4
+
+as.numeric("hello")
+[1] NA
+
+
+Vector: similar to array, list of same data types
+remain <- c(10,20,30)
+remain
+[1] 10 20 30
+
+# each element of a vector is of length 1, so for remain variable the length is 3
+
+is.vector(remain)		#used to check if the variable is of type vector
+
+[1] TRUE
+suits <- c("a", "b", "c")
+names(remain) <- suits
+i/p: remain
+o/p:
+a 	b 	c
+10	20	30
+
+remain <- c(a = 1, b = 2, c = 3)		#can be used with "" for characters
+
+
+Vector Arithmetics:
+earnings <- c(50, 100, 30)
+
+earnings * 3		#similar with all operators
+[1] 150 300 90
+
+expenses <- c(30, 40, 80) 	#similar to matrix
+earning - expenses
+[1] 20 60 -50
+
+bank <- earnings - expenses
+sum(bank)
+[1] 30
+
+earnings > expenses
+[1] TRUE TURE FALSE
+
+Subsetting Vectors:
+remain <- c(spades = 11, hearts = 23, diamonds = 11, clubs = 13)
+
+i/p: remain[1]
+o/p:
+spades
+11
+
+i/p: remain["spades"]
+o/p:
+spades
+11
+
+remain_black <- remain[c[1,4]]
+remain_black
+spades 	clubs
+11		13
+
+remain_black <- remain[c[4,1]]
+remain_black
+clubs	spades
+13		11
+
+remain[2:5]
+
+remain["spades", "diamonds"]
+remain[-1]		#deleting the vector
+remain[-c(1, 2)]		#deleting multiple vectors
+
+#logical vector
+remain[c(FALSE, TRUE, FALSE, TRUE)]	#deletes the vector with false values
+
+
+remain[c(FALSE, TRUE, FALSE, TRUE)] is similar to remain[c(FALSE, TRUE)]
+# repeats the logical vector operation till the size of the vector
+
+Logical Operator
+
+#comments required
+
+> poker_vector <- c(140, -50, 20, -120, 240)
+... roulette_vector <- c(-24, -50, 100, -350, 10)
+... days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+... names(poker_vector) <- days_vector
+... names(roulette_vector) <- days_vector
+> selection_vector <- poker_vector>0
+> selection_vector
+   Monday   Tuesday Wednesday  Thursday    Friday
+     TRUE     FALSE      TRUE     FALSE      TRUE
+
+
+
+> poker_profits <- poker_vector[selection_vector]
+> poker_profits
+   Monday Wednesday    Friday
+      140        20       240
+>
+---------------------------
+
+# Casino winnings from Monday to Friday
+poker_vector <- c(140, -50, 20, -120, 240)
+roulette_vector <- c(-24, -50, 100, -350, 10)
+days_vector <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+names(poker_vector) <- days_vector
+names(roulette_vector) <- days_vector
+
+# Select amounts for profitable roulette days: roulette_profits
+select <- roulette_vector>0
+roulette_profits <- roulette_vector[select]
+
+# Sum of the profitable roulette days: roulette_total_profit
+roulette_total_profit <- sum(roulette_profits)
+
+# Number of profitable roulette days: num_profitable_days
+num_profitable_days <- sum(select)
+---------------------------
+
+# Select the player's score for the third game: player_third
+player_third <- player[3]
+
+# Select the scores where player exceeds hous: winning_scores
+winning_scores <- player[player > house]
+
+# Count number of times player < 18: n_low_score
+n_low_score <- sum(player < 18)
+---------------------------------
+
+Matrix: A natural extension of a vector
+
+matrix()
+#Matrix specified via num of rows or columns for a value of 1 to 6. It automatically depicts the clo or row automatically by the no of elements.
+matrix(1:6, nrow = 2)
+    [,1] [,2] [,3]
+[1,] 1    3     5
+[2,] 2    4     6
+
+matrix(1:6, ncol = 3)
+    [,1] [,2] [,3]
+[1,] 1    3     5
+[2,] 2    4     6
+
+matrix(1:6, nrow = 2, byrow = TRUE)
+    [,1] [,2] [,3]
+[1,] 1    2     3
+[2,] 4    5     6
+
+# if the value is not sufficient it recycles the values provided
+matrix(1:3, nrow = 2, ncol = 3)
+    [,1] [,2] [,3]
+[1,] 1    3     2
+[2,] 2    1     3
+
+if the value provided cannot be recycled in exact, warning msg is thrown
+matrix(1:4, nrow = 2, ncol = 3)
+    [,1] [,2] [,3]
+[1,] 1    3     1
+[2,] 2    4     2
+
+cbind(1:3, 1:3)
+
+
+rbind(1:3, 1:3)
+# Star Wars box office in millions (!)
+new_hope <- c(460.998, 314.4)
+empire_strikes <- c(290.475, 247.900)
+return_jedi <- c(309.306, 165.8)
+
+# Create star_wars_matrix
+star_wars_matrix <- rbind(new_hope, empire_strikes, return_jedi)
+-----------------------------------------
+
+#RowSUm()
+
+# Star Wars box office in millions (!)
+new_hope <- c(460.998, 314.4)
+empire_strikes <- c(290.475, 247.900)
+return_jedi <- c(309.306, 165.8)
+star_wars_matrix <- rbind(new_hope, empire_strikes, return_jedi)
+colnames(star_wars_matrix) <- c("US", "non-US")
+rownames(star_wars_matrix) <- c("A New Hope", "The Empire Strikes Back", "Return of the Jedi")
+
+# Calculate the worldwide box office: worldwide_vector
+worldwide_vector <- rowSums(star_wars_matrix)
+
+
+m <- matrix(1:6, nrow = 2, byrow = TRUE)
+rbind(m, 7:9)
+    [,1] [,2] [,3]
+[1,] 1    2     3
+[2,] 4    5     6
+[3,] 7    8     9
+
+naming a matrix: rowname(), colname()
+m <- matrix(1:6, nrow = 2, byrow = TRUE,
+        dimnames = list(c("row1", "row2"),
+        c("col1", "col2", "col3")))
