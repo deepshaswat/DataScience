@@ -1,30 +1,37 @@
-R
+Basic of R
 
 Variables:
 i/p: 1+2
 o/p: [1] 3
 
-i/p: height <- 2
+#providing input into variables. No need to declare based on the data types
+i/p: height <- 2		
 i/p: width <- 4
 
 i/p: height
 o/p: [1] 4
 
-i/p: ls()		#will list all the objects  in the workspace
+#command to list all the objects in the workspace
+i/p: ls()		
 o/p: [1] "height" "width"
 
 i/p: area <- height * width
 o/p: [1]
 
+
 R Script:
+
+#File name with .R extension
 rectangle.R
 # hash is used for commenting
 height <- 2
 width <- 4
 area <- height * width
+#area will print the area
 area
 
-#Arithmetics
+#Arithmetic Operations
+
 # Addition
 5 + 5
 
@@ -44,15 +51,19 @@ area
 # Modulo
 28 %% 6
 
-rm(area) to clear the variables
+#rm() function with the object passed as a parameter is used to remove the object from the workspace
+rm(area)
 
+#class() method is used to check the datatype of a value or variable
+class(5)
+[1] "numeric"
 
 #data types:
+
+#Logical datatypes have the following values
 class(TRUE) (FALSE) (NA)
 [1] "logical"
 
-
-numeric:
 i/p: 2
 [1] 2
 
@@ -68,7 +79,7 @@ class(2)
 class(2L)
 [1] "integer"
 
-# is function is used to check the class of the value
+# is() function is used to check the class of the value
 is.numeric(2)
 [1] TRUE
 
@@ -100,7 +111,9 @@ as.numeric("hello")
 [1] NA
 
 
-Vector: similar to array, list of same data types
+#Vector: similar to array, list of same data types
+
+#c() is used to create a vector
 remain <- c(10,20,30)
 remain
 [1] 10 20 30
@@ -111,6 +124,7 @@ is.vector(remain)		#used to check if the variable is of type vector
 
 [1] TRUE
 suits <- c("a", "b", "c")
+#names(<vector_name>) <- <vector> is used to provide name to the vector values
 names(remain) <- suits
 i/p: remain
 o/p:
@@ -123,23 +137,27 @@ remain <- c(a = 1, b = 2, c = 3)		#can be used with "" for characters
 Vector Arithmetics:
 earnings <- c(50, 100, 30)
 
+# operation with any arithemetic operators will make the operation with all the elements of the vector
 earnings * 3		#similar with all operators
 [1] 150 300 90
 
+# when a vector is operated with another vector, the operations are that to the matrix operation. Each element is added or substracted with the corresponding elements of the other vector
 expenses <- c(30, 40, 80) 	#similar to matrix
 earning - expenses
 [1] 20 60 -50
 
+# sum() is used to add all the elements of a vector
 bank <- earnings - expenses
 sum(bank)
 [1] 30
 
+# for comparison of two vectors, the comparison is done at the element level
 earnings > expenses
 [1] TRUE TURE FALSE
 
 Subsetting Vectors:
 remain <- c(spades = 11, hearts = 23, diamonds = 11, clubs = 13)
-
+# accessing each element
 i/p: remain[1]
 o/p:
 spades
@@ -150,6 +168,7 @@ o/p:
 spades
 11
 
+# creating a subset vector 
 remain_black <- remain[c[1,4]]
 remain_black
 spades 	clubs
@@ -160,6 +179,7 @@ remain_black
 clubs	spades
 13		11
 
+# providing the index of the subset vector from 2 to 5
 remain[2:5]
 
 remain["spades", "diamonds"]
@@ -227,7 +247,7 @@ n_low_score <- sum(player < 18)
 Matrix: A natural extension of a vector
 
 matrix()
-#Matrix specified via num of rows or columns for a value of 1 to 6. It automatically depicts the clo or row automatically by the no of elements.
+#Matrix specified via num of rows or columns for a value of 1 to 6. It automatically depicts the col or row automatically by the no of elements.
 matrix(1:6, nrow = 2)
     [,1] [,2] [,3]
 [1,] 1    3     5
@@ -268,7 +288,7 @@ return_jedi <- c(309.306, 165.8)
 star_wars_matrix <- rbind(new_hope, empire_strikes, return_jedi)
 -----------------------------------------
 
-#RowSUm()
+#RowSum()
 
 # Star Wars box office in millions (!)
 new_hope <- c(460.998, 314.4)
@@ -293,3 +313,6 @@ naming a matrix: rowname(), colname()
 m <- matrix(1:6, nrow = 2, byrow = TRUE,
         dimnames = list(c("row1", "row2"),
         c("col1", "col2", "col3")))
+		
+
+		
