@@ -5,14 +5,14 @@ i/p: 1+2
 o/p: [1] 3
 
 #providing input into variables. No need to declare based on the data types
-i/p: height <- 2		
+i/p: height <- 2
 i/p: width <- 4
 
 i/p: height
 o/p: [1] 4
 
 #command to list all the objects in the workspace
-i/p: ls()		
+i/p: ls()
 o/p: [1] "height" "width"
 
 i/p: area <- height * width
@@ -137,11 +137,11 @@ remain <- c(a = 1, b = 2, c = 3)		#can be used with "" for characters
 Vector Arithmetics:
 earnings <- c(50, 100, 30)
 
-# operation with any arithemetic operators will make the operation with all the elements of the vector
+# operation with any arithmetic operators will make the operation with all the elements of the vector
 earnings * 3		#similar with all operators
 [1] 150 300 90
 
-# when a vector is operated with another vector, the operations are that to the matrix operation. Each element is added or substracted with the corresponding elements of the other vector
+# when a vector is operated with another vector, the operations are that to the matrix operation. Each element is added or subtracted with the corresponding elements of the other vector
 expenses <- c(30, 40, 80) 	#similar to matrix
 earning - expenses
 [1] 20 60 -50
@@ -168,7 +168,7 @@ o/p:
 spades
 11
 
-# creating a subset vector 
+# creating a subset vector
 remain_black <- remain[c[1,4]]
 remain_black
 spades 	clubs
@@ -313,13 +313,13 @@ naming a matrix: rowname(), colname()
 m <- matrix(1:6, nrow = 2, byrow = TRUE,
         dimnames = list(c("row1", "row2"),
         c("col1", "col2", "col3")))
-		
+
 #creating matrix
 m <- matrix(sample(1:15,12), nrow=3)
 accessing an element
 m[1,3]
 for a single row
-m[3,] 
+m[3,]
 for a column
 m[,3]
 
@@ -327,34 +327,34 @@ for m[4] # with no comma, it counts for column till 4th element
 
 m[2, c(2,3)] #this will select the elements from the 2nd row, 2nd and 3rd elements
 rownames, colnames
-		
-		
+
+
 Factors:
 		blood <- c("B", "AB", "O", "A", "O", "O", "A", "B")
 		blood_factor <- factor(blood)
 		blood_factor
-		[1] B AB O A O O A B 
+		[1] B AB O A O O A B
 		Levels: A AB B Operations	#sorted alphabetically and all the values are stored as an integer value.
-		
+
 		str(blood_factor)
 		Factor w/ 4 levels: "A","AB","B",O": 3 2 4 1 4 4 1 3
 		levels, labels and ordered arguments in factor
 		factor(<name>, ordered = TRUE, levels = c(<ascending order>))
-		
+
 Summary():
  # Defintion of survey_vector and survey_factor
 > survey_vector <- c("R", "L", "L", "R", "R")
 > survey_factor <- factor(survey_vector, levels = c("R", "L"), labels = c("Right", "Left"))
-> 
+>
 > # Summarize survey_vector
 >  summary(survey_vector)
-   Length     Class      Mode 
-        5 character character 
-> 
+   Length     Class      Mode
+        5 character character
+>
 > # Summarize survey_factor
 >  summary(survey_factor)
-Right  Left 
-    3     2 
+Right  Left
+    3     2
 
 
 Lists:
@@ -363,32 +363,176 @@ Lists:
 		>song
 o/p 	$title
 		title
-		
+
 		$duration
 		190
-		
+
 		$track
 		5
-		
+
 		to display: str(song)
-		
+
 		subset list: single [] will subset the list but will return the list.
 		normal will be [[]] will return the string
-		
-		For 2 elements: 
-		
+
+		For 2 elements:
+
 		Extending list:
 		song[["sent"]] <- friends
-		song$sent <- friends 	#both the above statments are the same
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		song$sent <- friends 	#both the above statements are the same
+
+Data Frames:
+
+Datasets:
+E.g.: People: name, age.. = list of variables.
+Rows and columns with different data types.
+Elements of a column has to be of same type
+
+Data frame is mostly imported.
+Can be created using data.frame()
+
+name, age and child are the vectors
+df <- data.frame(name, age, child)
+names(df) <- c()
+
+str(df)
+rows are the observations and the columns are the variables.
+
+By default all the values are stored in data frames as factors. To remove the storing of the strings as factors; i.e. the values as the numbers, use the variable while creating the data frames, stringsAsFactors = FALSE
+
+head() -> displays the first observation of the dataset
+tail() the last observation
+dim() -> the dimensions of the dataset
+
+Subsetting the Data Frame
+both [], [[]] and $ can be used
+
+people[3,2]
+3rd row, 2nd column
+people[3,]
+entire row
+
+people[,2] or people[,"age"]
+entire 2nd row
+
+people[2] will return the entire 2nd row but as a data frame
+
+single square bracket the value returned is a data frame but for double sq brackets and $, the value returned is either matxix or vector
+
+
+Extending the data frame:
+adding the column, height
+
+people[["height"]] <- height
+
+or people$height <- height
+
+cbind(people, weight)
+
+rbind(people, tom) : used to add the row
+
+Sorting the data frame
+
+sort(people$age) : returns only the order of the age and returns a vector
+
+ranks <- order(people$age)
+
+people[ranks, ] #will sort the results in the ascending order of the age
+
+for descending:
+people[order(people$age, desreasing = TRUE), ]
+order(people$age, desreasing = TRUE) : is used in place of rank directly in the variable
+
+
+Subsetting the data frame using the subset method:
+ planets_with_rings_df <- subset(planets_df, has_rings == TRUE)
+
+ What it does is subset the data frame planets_df for the column has_rings when the column has the value TRUE
+
+deleting a column:
+a <- subset(countries_df, select = c(1,2,5))
+This will select the columns 1,2,5
+
+select = -c(1,2,5)
+This will select all columns except 1,2 and 5
+
+
+Basic Graphics:
+
+plot() and hist()
+
+plot():
+  different inputs -> different plots
+  plot(countries$continent) : this is used to plot a graph for the countries DF where continent is a factor. R recongnises the values of the factor and plot it as no of countries in each continents. Takes the bar graph
+
+  for population it takes the point
+  can be plotted for two variables
+
+  first element in the plot() is a variable for x axis and 2nd variable for the y-axis
+
+
+
+Hist():
+  hist(africa$population, breaks = 10) used to break the histogram to 10 bars.
+
+
+
+Customizing Plots:
+  Mercury : temp and pressure
+
+  plot(mercury$temperature, mercury$pressure,
+  xlab = "temperature",   #x-axis label
+  ylab = "Pressure",      #y-axis label
+  main = "T vs P for Mercury",    #plot title
+  type = "o",   #plot type; o specifies both line and point l specifies the line
+  col = "orange")
+
+?par() will display help for par
+  par() : parameter is displayed for all the plots after the command
+
+other graphical parameters:
+  col.main = "darkgray", #color of the main title
+  cex.axis  = 0.6,    # font size of the axis labels
+  lty = 5,    #line type
+  pch = 4,    #plot symbol
+  sub = "Text" #subtitle below the x-axis label
+
+Customizing the histogram:
+hist(x, breaks = "Sturges",
+   freq = NULL, probability = !freq,
+   include.lowest = TRUE, right = TRUE,
+   density = NULL, angle = 45, col = NULL, border = NULL,
+   main = paste("Histogram of" , xname),
+   xlim = range(breaks), ylim = NULL,
+   xlab = xname, ylab,
+   axes = TRUE, plot = TRUE, labels = FALSE,
+   nclass = NULL, warn.unused = TRUE, ...)
+   The fill of the bars is "cyan" (col argument).
+The color of the bars' borders are "red" (border argument).
+
+Multiple Plots:
+  mfrow parameter in par()
+
+  par(mfrow = c(2,2))   #or mfcol
+  to add the graph in a same plot for 4 graph
+
+  to reset:
+  par(mfrow = c(1,1))
+
+layout():
+  grid <- matrix(c(1,1,2,3), nrow = 2, ncol = 2, byrow = TRUE)
+  layout(grid)
+  to reset: layout(1)
+
+old_par <- par()
+par(old_par)
+
+Stack graphical elements:
+  lm_sales <- lm(<xaxis> ~ <yaxis>)
+  abline(coef(lm_sales), lwd = 2)
+
+  in place of abline(), points(), segments(), lines() and text() can be used
+
+  ranks <- order(shop$ads)
+
+  lines(shop$ads[ranks], shop$sales[ranks])
