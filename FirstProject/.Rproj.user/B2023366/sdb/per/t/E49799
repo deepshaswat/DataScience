@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "dat <- read.csv(\"femaleMiceWeights.csv\")\n\n\nlibrary(dplyr)\n\ncontrols <- filter(dat, Diet==\"chow\")\ncontrols <- select(controls, Bodyweight)\nunlist(controls)\nView(controls)\n\ncontrols <- filter(dat, Diet ==\"chow\") %>% select(Bodyweight) %>% unlist\ntreatments <- filter(dat, Diet ==\"hf\") %>% select(Bodyweight) %>% unlist\n\n\n\n\n",
+    "created" : 1472214466393.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2825765842",
+    "id" : "E49799",
+    "lastKnownWriteTime" : 1472214763,
+    "last_content_update" : 1472214763106,
+    "path" : "C:/Users/deeps/Programming/git/DataScience/FirstProject/code.R",
+    "project_path" : "code.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
