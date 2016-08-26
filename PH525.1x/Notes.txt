@@ -1,0 +1,39 @@
+HarvardX: PH525.1x Statistics and R
+
+Week1
+
+average of vector: mean(<vector_name>)
+
+car is a data set with 2 column: speed and dist
+to find the average of the distace: mean(cars[,2])
+
+Summation of a series using FOR loop
+s <- 0
+for(i in 1:25){
+  s <- s + i*i
+}
+s  
+
+which function
+
+which(cars[,2] == 85) compares the value of distace column with 85 and prints the row no
+
+File Name: script.Rmd
+Used to write the simple text and the code. The output file can be a HTML File or a pdf file
+With # sign the title is given and the code is written in the ``` section
+
+---
+output: pdf_document
+---
+#My Script
+
+A liner model
+
+
+```{r}
+x<- 1:10
+y <- rnorm(10)
+plot(x,y)
+fit <- lm(y~x)
+```
+

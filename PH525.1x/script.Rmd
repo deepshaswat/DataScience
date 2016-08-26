@@ -1,0 +1,15 @@
+---
+output: pdf_document
+---
+#My Scrip
+
+A liner model
+
+
+```{r}
+x<- 1:10
+y <- rnorm(10)
+plot(x,y)
+fit <- lm(y~x)
+```
+
