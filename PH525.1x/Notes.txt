@@ -1,6 +1,8 @@
 HarvardX: PH525.1x Statistics and R
 
-Week1
+--------------------------------------
+Week1 - Started
+--------------------------------------
 
 average of vector: mean(<vector_name>)
 
@@ -37,3 +39,69 @@ plot(x,y)
 fit <- lm(y~x)
 ```
 
+code.R:
+ Reading data from a csv file: read.csv("")
+
+ Help can be accessed using the following command: ?read.csv
+
+Homework:
+ dat <- read.csv("femaleMiceWeights.csv")
+dat
+names(dat)
+dat[12,2]
+
+#this extracts the Bodyweight column and prints the value of the 11th row
+dat$Bodyweight[11]		
+
+v2 <- c(dat[13:24,])
+mean(v2$Bodyweight)
+or
+mean(dat$Bodyweight[which(dat$Diet == "hf")])
+# the above command selects the data for the col Diet with valu = hf and then calculates the mean for the row val in the col Bodyweight
+
+Sampling:
+Using the sample() function we can sample the data.
+Using set.seed(1) prior to the sample command, we can get the same value after each command.
+
+set.seed(1);sample(dat$Bodyweight[13:24],1)
+
+# the above command sets the seed to 1 and then gets the sample data for the Bodyweight field of dat for the range of 13:24 rows and only 1 value to be printed.
+
+Package: dplyr
+View(dat)
+
+filters: Used to filter the DF. It is used with select to select any particular column.
+Also unlist function can be used to convert the data frame to a vector
+
+%>% - this is used as a pipe to redirect the output as an input to another function.
+
+E.g:
+controls <- filter(dat, Diet=="chow")
+controls <- select(controls, Bodyweight)
+unlist(controls)
+View(controls)
+
+controls <- filter(dat, Diet =="chow") %>% select(Bodyweight) %>% unlist
+
+Homework:
+
+Reading a new csv file
+dat1 <- read.csv("msleep_ggplot2.csv")
+class(dat1)
+
+View(dat1)
+
+#Creating a filter and selecting the sleep time of a particular filter
+controls <- filter(dat1, order == "Primates") %>% select(sleep_total)
+nrow(controls)	#count the number of rows for the filter
+class(controls)
+mean(controls$sleep_total)		#calculating the mean after the filter and the select
+
+
+controls <- filter(dat1, order == "Primates") %>% summarize(mean(sleep_total))
+#calculating the mean after filter without select and using summarize which clubs the select with anyother function which returns a single value and in this case the mean of the select for the sleep_total 
+
+
+--------------------------------------
+Week1 - Completed
+--------------------------------------

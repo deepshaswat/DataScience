@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "dat <- read.csv(\"femaleMiceWeights.csv\")\n.f = function() {\n  dat\nnames(dat)\ndat[12,2]\ndat$Bodyweight[11]\nlength(dat$Bodyweight)\nv1 <- c(dat[1:12,])\nv2 <- c(dat[13:24,])\nmean(v2$Bodyweight)\nmean(dat$Bodyweight[which(dat$Diet == \"hf\")])\nwhich(dat$Diet == \"hf\")\n\nset.seed(1)\nx <- 13:24\nsample(x)\n#dat[$Bodyweight[sample(13:24, 1)]]\nset.seed(1);sample(dat$Bodyweight[13:24],1)\n}\n\nlibrary(dplyr)\n\ncontrols <- filter(dat, Diet==\"chow\")\ncontrols <- select(controls, Bodyweight)\nunlist(controls)\nView(controls)\n\ncontrols <- filter(dat, Diet ==\"chow\") %>% select(Bodyweight) %>% unlist\n\nView(controls)\ncontrols\n\ndat1 <- read.csv(\"msleep_ggplot2.csv\")\nclass(dat1)\n\nView(dat1)\ncontrols <- filter(dat1, order == \"Primates\") %>% select(sleep_total)\nnrow(controls)\nclass(controls)\nmean(controls$sleep_total)\n\ncontrols <- filter(dat1, order == \"Primates\") %>% summarize(mean(sleep_total))\ncontrols\n\n\n",
+    "created" : 1472206014291.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "762403704",
+    "id" : "B650AADF",
+    "lastKnownWriteTime" : 1472214138,
+    "last_content_update" : 1472214138150,
+    "path" : "C:/Users/deeps/Programming/git/DataScience/FirstProject/PH525-1_Week1.R",
+    "project_path" : "PH525-1_Week1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
