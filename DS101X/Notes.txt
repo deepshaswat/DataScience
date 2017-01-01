@@ -1,0 +1,16 @@
+ColumbiaX:  DS101X
+
+All the mathematical formulas and exercise to be done in a NoteBook.
+
+
+Center of Variation:
+1. mean: numerial average
+2. median: mid-point
+
+Data with few extremely large value:
+1. mean is more affected by them than median
+2. Sensitive to outliner
+
+Standard Deviation:
+variance: Check NoteBook
+ 
